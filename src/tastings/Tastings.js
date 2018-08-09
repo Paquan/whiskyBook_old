@@ -37,15 +37,17 @@ const whiskys = [
 const Table = ({whiskys}) => (
     <table>
         <thead>
-            <th>Whisky</th>
-            <th>Kind</th>
-            <th>Age</th>
-            <th>Heritage</th>
-            <th>Vol.</th>
-            <th colSpan="2">Maturation</th>
-            <th>Extras</th>
-            <th>Date of tasting</th>
-            <th>Personla rating</th>
+            <tr>
+                <th>Whisky</th>
+                <th>Kind</th>
+                <th>Age</th>
+                <th>Heritage</th>
+                <th>Vol.</th>
+                <th colSpan="2">Maturation</th>
+                <th>Extras</th>
+                <th>Date of tasting</th>
+                <th>Personla rating</th>
+            </tr>
         </thead>
         <tbody>
             {whiskys.map((whisky, index) => {
