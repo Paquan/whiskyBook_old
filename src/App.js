@@ -8,13 +8,15 @@ import { Home } from "./home/Home";
 export class App extends React.Component {
   render() {
     return (
-      <Router>
-        <React.Fragment>
-          <Route exact path="/" component={Home} />
-          <Route path="/tastings" component={Tastings} />
-          <Route path="/tasting-notes" component={TastingNotes} />
-        </React.Fragment>
-      </Router>
+      <div className="container">
+        <Router>
+          <React.Fragment>
+            <Route exact path="/" component={Home} />
+            <Route path="/tastings" component={Tastings} />
+            <Route path="/tasting-notes" component={TastingNotes} />
+          </React.Fragment>
+        </Router>
+      </div>
     );
   }
 }
