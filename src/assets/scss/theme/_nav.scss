@@ -1,0 +1,14 @@
+.nav {
+    display: flex;
+    justify-content: space-around;
+    .nav-item {
+        width: 250px;
+        height: 150px;
+        background-color: #FFFFFF88;
+        font-size: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 5px;
+    }
+}
