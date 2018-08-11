@@ -1,4 +1,5 @@
 import React from "react";
+import { Page } from "../shared/Page";
 
 const whiskys = [
   {
@@ -108,9 +109,9 @@ const Table = ({ whiskys }) => (
 export class Tastings extends React.Component {
   render() {
     return (
-      <React.Fragment>
+      <Page>
         <Table whiskys={whiskys} />
-      </React.Fragment>
+      </Page>
     );
   }
 }

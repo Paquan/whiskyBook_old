@@ -24,4 +24,8 @@ body {
     background-size: cover;
     height: 100%;
     overflow: hidden;
+
+    a:hover {
+        text-decoration: none;
+    }
 }

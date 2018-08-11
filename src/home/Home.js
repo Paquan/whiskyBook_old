@@ -17,12 +17,12 @@ export class Home extends React.Component {
         </div>
         <nav>
           <ul className="nav">
-            <li className="nav-item">
-              <NavLink to="/tastings">Tastings</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink to="/tasting-notes">Tasting Notes</NavLink>
-            </li>
+            <NavLink to="/tastings">
+              <li className="nav-item">Tastings</li>
+            </NavLink>
+            <NavLink to="/tasting-notes">
+              <li className="nav-item">Tasting Notes</li>
+            </NavLink>
           </ul>
         </nav>
       </React.Fragment>
