@@ -40,9 +40,10 @@ const whiskys = [
 ];
 
 const Table = ({ whiskys }) => (
-  <table>
+  <table className="table table-striped">
     <thead>
       <tr>
+        <th>#</th>
         <th>Whisky</th>
         <th>Kind</th>
         <th>Age</th>
@@ -51,7 +52,7 @@ const Table = ({ whiskys }) => (
         <th colSpan="2">Maturation</th>
         <th>Extras</th>
         <th>Date of tasting</th>
-        <th>Personla rating</th>
+        <th>Personal rating</th>
       </tr>
     </thead>
     <tbody>
@@ -93,10 +94,16 @@ const Table = ({ whiskys }) => (
             })}
           </td>
           <td>
-            <div>Collored: {whisky.extras.caskStrength}</div>
-            <div>Chill-Filtration: {whisky.extras.caskStrength}</div>
-            <div>Cask Strength: {whisky.extras.caskStrength}</div>
-            <div>Single Cask: {whisky.extras.caskStrength}</div>
+            <div>Collored: {whisky.extras.caskStrength ? "true" : "false"}</div>
+            <div>
+              Chill-Filtration: {whisky.extras.caskStrength ? "true" : "false"}
+            </div>
+            <div>
+              Cask Strength: {whisky.extras.caskStrength ? "true" : "false"}
+            </div>
+            <div>
+              Single Cask: {whisky.extras.caskStrength ? "true" : "false"}
+            </div>
           </td>
           <td>{whisky.dateOfTasting}</td>
           <td>{whisky.rating}</td>
