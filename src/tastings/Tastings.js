@@ -1,5 +1,7 @@
 import React from "react";
 import { Page } from "../shared/Page";
+import { AddNew } from "./AddNew";
+import { Table } from "reactstrap";
 
 const whiskys = [
   {
@@ -39,8 +41,8 @@ const whiskys = [
   }
 ];
 
-const Table = ({ whiskys }) => (
-  <table className="table table-striped">
+const TastingsTable = ({ whiskys }) => (
+  <Table>
     <thead>
       <tr>
         <th>#</th>
@@ -110,14 +112,15 @@ const Table = ({ whiskys }) => (
         </tr>
       ))}
     </tbody>
-  </table>
+  </Table>
 );
 
 export class Tastings extends React.Component {
   render() {
     return (
       <Page>
-        <Table whiskys={whiskys} />
+        <AddNew />
+        <TastingsTable whiskys={whiskys} />
       </Page>
     );
   }
