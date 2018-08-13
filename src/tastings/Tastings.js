@@ -5,41 +5,106 @@ import { Table } from "reactstrap";
 
 const whiskys = [
   {
+    number: 1,
     disillery: "Glenmorangie",
     name: "Quinta Ruban",
     age: 12,
     kind: "SM",
     heritage: {
       country: "SC",
-      area: "HIGH"
+      area: "HIGH",
     },
     extras: {
       colored: true,
       chillFiltered: false,
       singleCask: false,
-      caskStrength: false
+      caskStrength: false,
     },
     vol: 46,
-    dateOfTasting: 5324134547,
+    dateOfTasting: 1534000000000,
     marturation: [
       {
         cask: "BOURBON",
         heritageOfCask: "USA",
         specifictionOfContent: null,
-        duration: 10
-      }
+        duration: 10,
+      },
     ],
     finish: [
       {
         cask: "PORT",
         heritageOfCask: null,
         specifictionOfContent: null,
-        duration: 2
-      }
+        duration: 2,
+      },
     ],
-    rating: 6
-  }
+    rating: 6,
+  },
+  {
+    number: 2,
+    disillery: "Glenmorangie",
+    name: "Quinta Ruban",
+    age: 12,
+    kind: "SM",
+    heritage: {
+      country: "SC",
+      area: "HIGH",
+    },
+    extras: {
+      colored: true,
+      chillFiltered: false,
+      singleCask: false,
+      caskStrength: false,
+    },
+    vol: 46,
+    dateOfTasting: 1534000000000,
+    marturation: [
+      {
+        cask: "BOURBON",
+        heritageOfCask: "USA",
+        specifictionOfContent: null,
+        duration: 10,
+      },
+    ],
+    finish: [
+      {
+        cask: "PORT",
+        heritageOfCask: null,
+        specifictionOfContent: null,
+        duration: 13,
+      },
+    ],
+    rating: 6,
+  },
 ];
+
+const getRating = ratingIndex => {
+  let parsedRating = "";
+  for (let index = 0; index < ratingIndex; index++) {
+    parsedRating += "*";
+  }
+  return <span>{parsedRating}</span>;
+};
+
+const getDuration = month => {
+  let durationString;
+  if (month > 11) {
+    durationString = `${Math.floor(month / 12).toString()} J.`;
+    month = month % 12;
+    if (month === 0) {
+      return durationString;
+    }
+  }
+  durationString
+    ? (durationString += `, ${month} Mon.`)
+    : (durationString = `${month} Mon.`);
+  return durationString;
+};
+
+const getDate = timeStamp => {
+  const date = new Date(timeStamp);
+  return date.toLocaleDateString();
+};
 
 const TastingsTable = ({ whiskys }) => (
   <Table>
@@ -58,8 +123,9 @@ const TastingsTable = ({ whiskys }) => (
       </tr>
     </thead>
     <tbody>
-      {whiskys.map((whisky, index) => (
-        <tr key={index}>
+      {whiskys.map(whisky => (
+        <tr key={whisky.number}>
+          <th>{whisky.number}</th>
           <td>
             <div>{whisky.disillery}</div>
             <div>{whisky.name}</div>
@@ -90,7 +156,7 @@ const TastingsTable = ({ whiskys }) => (
                   <div>{stage.cask}</div>
                   <div>{stage.heritageOfCask}</div>
                   <div>{stage.specifictionOfContent}</div>
-                  <div>{stage.duration}</div>
+                  <div>{getDuration(stage.duration)}</div>
                 </React.Fragment>
               );
             })}
@@ -107,8 +173,8 @@ const TastingsTable = ({ whiskys }) => (
               Single Cask: {whisky.extras.caskStrength ? "true" : "false"}
             </div>
           </td>
-          <td>{whisky.dateOfTasting}</td>
-          <td>{whisky.rating}</td>
+          <td>{getDate(whisky.dateOfTasting)}</td>
+          <td>{getRating(whisky.rating)}</td>
         </tr>
       ))}
     </tbody>
