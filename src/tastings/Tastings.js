@@ -1,7 +1,13 @@
 import React from "react";
 import { Page } from "../shared/Page";
-import { AddNew } from "./AddNew";
-import { Table } from "reactstrap";
+import {
+  Table,
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+} from "reactstrap";
 
 const whiskys = [
   {
@@ -182,11 +188,46 @@ const TastingsTable = ({ whiskys }) => (
 );
 
 export class Tastings extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      addWhiskyModal: false,
+    };
+
+    this.toggleAddWhiskyModal = this.toggleAddWhiskyModal.bind(this);
+  }
+
+
+  toggleAddWhiskyModal() {
+    this.setState({
+      addWhiskyModal: !this.state.addWhiskyModal,
+    });
+  }
+
   render() {
     return (
       <Page>
-        <AddNew />
         <TastingsTable whiskys={whiskys} />
+        <Button color="primary" onClick={this.toggleAddWhiskyModal}>
+          Add Whisky
+        </Button>
+        <Modal
+          isOpen={this.state.addWhiskyModal}
+          toggle={this.toggleAddWhiskyModal}
+        >
+          <ModalHeader toggle={this.toggleAddWhiskyModal}>
+            Modal title
+          </ModalHeader>
+          <ModalBody>Test Modal</ModalBody>
+          <ModalFooter>
+            <Button color="primary" onClick={this.toggleAddWhiskyModal}>
+              Do Something
+            </Button>
+            <Button color="secondary" onClick={this.toggleAddWhiskyModal}>
+              Cancel
+            </Button>
+          </ModalFooter>
+        </Modal>
       </Page>
     );
   }
