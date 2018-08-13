@@ -9,7 +9,7 @@ import {
   ModalFooter,
 } from "reactstrap";
 
-const whiskys = [
+const whiskies = [
   {
     number: 1,
     disillery: "Glenmorangie",
@@ -112,7 +112,7 @@ const getDate = timeStamp => {
   return date.toLocaleDateString();
 };
 
-const TastingsTable = ({ whiskys }) => (
+const TastingsTable = ({ whiskies }) => (
   <Table>
     <thead>
       <tr>
@@ -129,7 +129,7 @@ const TastingsTable = ({ whiskys }) => (
       </tr>
     </thead>
     <tbody>
-      {whiskys.map(whisky => (
+      {whiskies.map(whisky => (
         <tr key={whisky.number}>
           <th>{whisky.number}</th>
           <td>
@@ -192,11 +192,19 @@ export class Tastings extends React.Component {
     super(props);
     this.state = {
       addWhiskyModal: false,
+      whiskies: [],
     };
 
     this.toggleAddWhiskyModal = this.toggleAddWhiskyModal.bind(this);
   }
 
+  componentDidMount() {
+    this.loadData();
+  }
+
+  loadData() {
+    this.setState({ whiskies });
+  }
 
   toggleAddWhiskyModal() {
     this.setState({
@@ -207,7 +215,6 @@ export class Tastings extends React.Component {
   render() {
     return (
       <Page>
-        <TastingsTable whiskys={whiskys} />
         <Button color="primary" onClick={this.toggleAddWhiskyModal}>
           Add Whisky
         </Button>
@@ -228,6 +235,9 @@ export class Tastings extends React.Component {
             </Button>
           </ModalFooter>
         </Modal>
+        {this.state.whiskies.length && (
+          <TastingsTable whiskies={this.state.whiskies} />
+        )}
       </Page>
     );
   }
