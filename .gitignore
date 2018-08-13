@@ -20,5 +20,4 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-src/App.css
-src/assets/scss/index.css
+src/**/*.css
