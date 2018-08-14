@@ -1,5 +1,5 @@
-import React from "react";
-import { Page } from "../shared/Page";
+import React from 'react';
+import { Page } from '../shared/Page';
 import {
   Table,
   Button,
@@ -12,91 +12,91 @@ import {
   PaginationLink,
   PaginationItem,
   Pagination,
-  TabPane,
-} from "reactstrap";
-import classnames from "classnames";
-import CreatableSelect from "react-select/lib/Creatable";
-import { tastingOptions } from "../shared/config/tastingOptions";
+  TabPane
+} from 'reactstrap';
+import classnames from 'classnames';
+import CreatableSelect from 'react-select/lib/Creatable';
+import { tastingOptions } from '../shared/config/tastingOptions';
 
 const whiskies = [
   {
     number: 1,
-    disillery: "Glenmorangie",
-    name: "Quinta Ruban",
+    disillery: 'Glenmorangie',
+    name: 'Quinta Ruban',
     age: 12,
-    kind: "SM",
+    kind: 'SM',
     heritage: {
-      country: "SC",
-      area: "HIGH",
+      country: 'SC',
+      area: 'HIGH'
     },
     extras: {
       colored: true,
       chillFiltered: false,
       singleCask: false,
-      caskStrength: false,
+      caskStrength: false
     },
     vol: 46,
     dateOfTasting: 1534000000000,
     marturation: [
       {
-        cask: "BOURBON",
-        heritageOfCask: "USA",
+        cask: 'BOURBON',
+        heritageOfCask: 'USA',
         specifictionOfContent: null,
-        duration: 10,
-      },
+        duration: 10
+      }
     ],
     finish: [
       {
-        cask: "PORT",
+        cask: 'PORT',
         heritageOfCask: null,
         specifictionOfContent: null,
-        duration: 2,
-      },
+        duration: 2
+      }
     ],
-    rating: 6,
+    rating: 6
   },
   {
     number: 2,
-    disillery: "Glenmorangie",
-    name: "Quinta Ruban",
+    disillery: 'Glenmorangie',
+    name: 'Quinta Ruban',
     age: 12,
-    kind: "SM",
+    kind: 'SM',
     heritage: {
-      country: "SC",
-      area: "HIGH",
+      country: 'SC',
+      area: 'HIGH'
     },
     extras: {
       colored: true,
       chillFiltered: false,
       singleCask: false,
-      caskStrength: false,
+      caskStrength: false
     },
     vol: 46,
     dateOfTasting: 1534000000000,
     marturation: [
       {
-        cask: "BOURBON",
-        heritageOfCask: "USA",
+        cask: 'BOURBON',
+        heritageOfCask: 'USA',
         specifictionOfContent: null,
-        duration: 10,
-      },
+        duration: 10
+      }
     ],
     finish: [
       {
-        cask: "PORT",
+        cask: 'PORT',
         heritageOfCask: null,
         specifictionOfContent: null,
-        duration: 13,
-      },
+        duration: 13
+      }
     ],
-    rating: 6,
-  },
+    rating: 6
+  }
 ];
 
 const getRating = ratingIndex => {
-  let parsedRating = "";
+  let parsedRating = '';
   for (let index = 0; index < ratingIndex; index++) {
-    parsedRating += "*";
+    parsedRating += '*';
   }
   return <span>{parsedRating}</span>;
 };
@@ -177,15 +177,15 @@ const TastingsTable = ({ whiskies }) => (
             })}
           </td>
           <td>
-            <div>Collored: {whisky.extras.caskStrength ? "true" : "false"}</div>
+            <div>Collored: {whisky.extras.caskStrength ? 'true' : 'false'}</div>
             <div>
-              Chill-Filtration: {whisky.extras.caskStrength ? "true" : "false"}
+              Chill-Filtration: {whisky.extras.caskStrength ? 'true' : 'false'}
             </div>
             <div>
-              Cask Strength: {whisky.extras.caskStrength ? "true" : "false"}
+              Cask Strength: {whisky.extras.caskStrength ? 'true' : 'false'}
             </div>
             <div>
-              Single Cask: {whisky.extras.caskStrength ? "true" : "false"}
+              Single Cask: {whisky.extras.caskStrength ? 'true' : 'false'}
             </div>
           </td>
           <td>{getDate(whisky.dateOfTasting)}</td>
@@ -201,9 +201,9 @@ export class Tastings extends React.Component {
     super(props);
     this.state = {
       addWhiskyModal: true,
-      activePage: "1",
+      activePage: '1',
       whiskies: [],
-      options: {},
+      options: {}
     };
 
     this.toggleAddWhiskyModal = this.toggleAddWhiskyModal.bind(this);
@@ -212,7 +212,7 @@ export class Tastings extends React.Component {
   selectPage(page) {
     if (this.state.activePage !== page) {
       this.setState({
-        activePage: page,
+        activePage: page
       });
     }
   }
@@ -227,7 +227,7 @@ export class Tastings extends React.Component {
 
   toggleAddWhiskyModal() {
     this.setState({
-      addWhiskyModal: !this.state.addWhiskyModal,
+      addWhiskyModal: !this.state.addWhiskyModal
     });
   }
 
@@ -237,8 +237,8 @@ export class Tastings extends React.Component {
         ...this.state,
         options: {
           ...this.state.options,
-          distilleries: [...this.state.options.distilleries, newValue.label],
-        },
+          distilleries: [...this.state.options.distilleries, newValue.label]
+        }
       });
     }
     console.log(newValue);
@@ -262,10 +262,10 @@ export class Tastings extends React.Component {
               <PaginationItem>
                 <PaginationLink
                   className={classnames({
-                    active: this.state.activePage === "1",
+                    active: this.state.activePage === '1'
                   })}
                   onClick={() => {
-                    this.selectPage("1");
+                    this.selectPage('1');
                   }}
                 >
                   Name
@@ -274,10 +274,10 @@ export class Tastings extends React.Component {
               <PaginationItem>
                 <PaginationLink
                   className={classnames({
-                    active: this.state.activePage === "2",
+                    active: this.state.activePage === '2'
                   })}
                   onClick={() => {
-                    this.selectPage("2");
+                    this.selectPage('2');
                   }}
                 >
                   Kind
@@ -293,7 +293,10 @@ export class Tastings extends React.Component {
                       options={
                         this.state.options.distilleries &&
                         this.state.options.distilleries
-                          .map(disillery => ({ value: disillery, label: disillery }))
+                          .map(disillery => ({
+                            value: disillery,
+                            label: disillery
+                          }))
                           .sort((a, b) => {
                             if (a.value > b.value) {
                               return 1;

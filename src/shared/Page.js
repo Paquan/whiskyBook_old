@@ -1,6 +1,6 @@
-import React from "react";
-import "./Page.css";
-import { Link } from "react-router-dom";
+import React from 'react';
+import './Page.css';
+import { Link } from 'react-router-dom';
 
 export class Page extends React.Component {
   render() {
