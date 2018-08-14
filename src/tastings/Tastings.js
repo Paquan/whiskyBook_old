@@ -122,7 +122,7 @@ const getDate = timeStamp => {
 };
 
 const TastingsTable = ({ whiskies }) => (
-  <Table>
+  <Table responsive>
     <thead>
       <tr>
         <th>#</th>
