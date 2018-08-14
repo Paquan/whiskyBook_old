@@ -15,7 +15,7 @@ export class Home extends React.Component {
             <Link to="/">Slàinte Mhath</Link>
           </h1>
         </div>
-        <nav>
+        <nav className="navMenu">
           <ul className="nav">
             <NavLink to="/tastings">
               <li className="nav-item">Tastings</li>

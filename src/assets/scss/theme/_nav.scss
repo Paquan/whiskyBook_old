@@ -1,14 +1,20 @@
-.nav {
+.navMenu {
+  .nav {
     display: flex;
     justify-content: space-around;
     .nav-item {
-        width: 250px;
-        height: 150px;
-        background-color: #FFFFFF88;
-        font-size: 2rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding-bottom: 5px;
+      width: 250px;
+      height: 150px;
+      background-color: #ffffff88;
+      font-size: 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-bottom: 5px;
     }
+  }
+}
+
+.page-link.active {
+    background-color: #f1f1f1;
 }

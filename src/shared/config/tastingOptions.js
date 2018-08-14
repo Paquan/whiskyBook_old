@@ -1,5 +1,5 @@
-const tastingOptions = {
-  destilleries: [],
+export const tastingOptions = {
+  distilleries: ["Glenmorangie", "GlenDronach", "Aberlour", "The Glenlivet", "Balvenie"],
   heritage: {
     SCT: [
       "HL",
@@ -43,6 +43,7 @@ const tastingOptions = {
     DNK: [],
     SWE: [],
     TWN: [],
+    FRA: [],
   },
   kind: ["SM", "BLM", "BL", "BO", "R"],
   maturation: {

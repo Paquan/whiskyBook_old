@@ -7,7 +7,16 @@ import {
   ModalHeader,
   ModalBody,
   ModalFooter,
+  Form,
+  TabContent,
+  PaginationLink,
+  PaginationItem,
+  Pagination,
+  TabPane,
 } from "reactstrap";
+import classnames from "classnames";
+import CreatableSelect from "react-select/lib/Creatable";
+import { tastingOptions } from "../shared/config/tastingOptions";
 
 const whiskies = [
   {
@@ -191,11 +200,21 @@ export class Tastings extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      addWhiskyModal: false,
+      addWhiskyModal: true,
+      activePage: "1",
       whiskies: [],
+      options: {},
     };
 
     this.toggleAddWhiskyModal = this.toggleAddWhiskyModal.bind(this);
+  }
+
+  selectPage(page) {
+    if (this.state.activePage !== page) {
+      this.setState({
+        activePage: page,
+      });
+    }
   }
 
   componentDidMount() {
@@ -203,7 +222,7 @@ export class Tastings extends React.Component {
   }
 
   loadData() {
-    this.setState({ whiskies });
+    this.setState({ whiskies, options: tastingOptions });
   }
 
   toggleAddWhiskyModal() {
@@ -211,6 +230,19 @@ export class Tastings extends React.Component {
       addWhiskyModal: !this.state.addWhiskyModal,
     });
   }
+
+  handleChange = newValue => {
+    if (newValue.__isNew__) {
+      this.setState({
+        ...this.state,
+        options: {
+          ...this.state.options,
+          distilleries: [...this.state.options.distilleries, newValue.label],
+        },
+      });
+    }
+    console.log(newValue);
+  };
 
   render() {
     return (
@@ -225,7 +257,68 @@ export class Tastings extends React.Component {
           <ModalHeader toggle={this.toggleAddWhiskyModal}>
             Modal title
           </ModalHeader>
-          <ModalBody>Test Modal</ModalBody>
+          <ModalBody>
+            <Pagination>
+              <PaginationItem>
+                <PaginationLink
+                  className={classnames({
+                    active: this.state.activePage === "1",
+                  })}
+                  onClick={() => {
+                    this.selectPage("1");
+                  }}
+                >
+                  Name
+                </PaginationLink>
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationLink
+                  className={classnames({
+                    active: this.state.activePage === "2",
+                  })}
+                  onClick={() => {
+                    this.selectPage("2");
+                  }}
+                >
+                  Kind
+                </PaginationLink>
+              </PaginationItem>
+            </Pagination>
+            <TabContent activeTab={this.state.activePage}>
+              <TabPane tabId="1">
+                <Form>
+                  <div className="form-group">
+                    <CreatableSelect
+                      onChange={this.handleChange}
+                      options={
+                        this.state.options.distilleries &&
+                        this.state.options.distilleries
+                          .map(disillery => ({ value: disillery, label: disillery }))
+                          .sort((a, b) => {
+                            if (a.value > b.value) {
+                              return 1;
+                            }
+                            if (a.value < b.value) {
+                              return -1;
+                            }
+                            // a muss gleich b sein
+                            return 0;
+                          })
+                      }
+                    />
+                  </div>
+                  <div className="form-group">
+                    <input
+                      className="form-control"
+                      type="text"
+                      placeholder="Name"
+                    />
+                  </div>
+                </Form>
+              </TabPane>
+              <TabPane tabId="2">...</TabPane>
+            </TabContent>
+          </ModalBody>
           <ModalFooter>
             <Button color="primary" onClick={this.toggleAddWhiskyModal}>
               Do Something
