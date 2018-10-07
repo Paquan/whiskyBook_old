@@ -1,6 +1,11 @@
 {
-    "files.associations": {
-        "*.js": "javascriptreact"
-    },
-    "editor.tabSize": 2
+  "files.associations": {
+    "*.js": "javascriptreact"
+  },
+  "editor.tabSize": 2,
+  "files.exclude": {
+    "**/*.css": true,
+    "**/*.css.map": true
+
+  },
 }
