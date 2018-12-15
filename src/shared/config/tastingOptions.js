@@ -1,10 +1,10 @@
 export const tastingOptions = {
   distilleries: [
-    'Glenmorangie',
-    'GlenDronach',
-    'Aberlour',
-    'The Glenlivet',
-    'Balvenie'
+    {value: 1, label: 'Glenmorangie'},
+    {value: 2, label: 'GlenDronach'},
+    {value: 3, label: 'Aberlour'},
+    {value: 4, label: 'The Glenlivet'},
+    {value: 5, label: 'Balvenie'}
   ],
   heritage: {
     SCT: [
