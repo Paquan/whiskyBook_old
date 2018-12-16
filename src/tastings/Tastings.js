@@ -42,26 +42,6 @@ export class Tastings extends React.Component {
     });
   }
 
-  handleChange = newValue => {
-    let distilleries = [];
-    if (!newValue) {
-      distilleries = this.state.options.distilleries.filter(distillery => {
-        return !distillery.__isNew__;
-      });
-    } else if (newValue.__isNew__) {
-      distilleries = [...this.state.options.distilleries, newValue];
-    }
-    console.log(distilleries);
-    
-    this.setState({
-      ...this.state,
-      options: {
-        ...this.state.options,
-        distilleries: distilleries
-      }
-    });
-  };
-
   render() {
     return (
       <Page>
@@ -74,7 +54,6 @@ export class Tastings extends React.Component {
           activeTab={this.state.activeTab}
           options={this.state.options}
           selectTab={this.selectTab}
-          handleChange={this.handleChange}
         />
         {this.state.whiskies.length && (
           <TastingsTable whiskies={this.state.whiskies} />
