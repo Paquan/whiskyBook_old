@@ -35,26 +35,26 @@ export const TastingsTable = ({ whiskies }) => (
       <tr>
         <th>#</th>
         <th>Whisky</th>
-        <th>Kind</th>
-        <th>Age</th>
-        <th>Heritage</th>
+        <th>Art</th>
+        <th>Alter</th>
+        <th>Herkunft</th>
         <th>Vol.</th>
-        <th colSpan="2">Maturation</th>
+        <th colSpan="2">Reifung</th>
         <th>Extras</th>
-        <th>Date of tasting</th>
-        <th>Personal rating</th>
+        <th>Tag der Probe</th>
+        <th>Bewertung</th>
       </tr>
     </thead>
     <tbody>
       {whiskies.map(whisky => (
         <tr key={whisky.number}>
-          <th>{whisky.number}</th>
+          <td>{whisky.number}</td>
           <td>
             <div>{whisky.disillery}</div>
             <div>{whisky.name}</div>
           </td>
           <td>{whisky.kind}</td>
-          <td>{whisky.age} Years</td>
+          <td>{whisky.age} Jahre</td>
           <td>
             <div>{whisky.heritage.country}</div>
             <div>{whisky.heritage.area}</div>

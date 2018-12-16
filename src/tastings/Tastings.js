@@ -46,7 +46,7 @@ export class Tastings extends React.Component {
     return (
       <Page>
         <Button color="primary" onClick={this.toggleAddWhiskyModal}>
-          Add Whisky
+          Whisky hinzufügen
         </Button>
         <AddWhiskyModal
           isOpen={this.state.addWhiskyModal}

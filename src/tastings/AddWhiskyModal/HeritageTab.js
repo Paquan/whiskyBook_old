@@ -2,7 +2,7 @@ import React from 'react';
 // import classnames from 'classnames';
 import { TabPane } from 'reactstrap';
 
-let selectedCountry = 'NIICX';
+let selectedCountry = 'SCT';
 
 const handelCountryChange = event => {
   selectedCountry = event.target.value;
@@ -10,9 +10,6 @@ const handelCountryChange = event => {
 
 export const HeritageTab = ({ options, tabId }) => (
   <TabPane tabId={tabId}>
-    <pre>
-      <code>{selectedCountry}</code>
-    </pre>
     <div className="form-group">
       <label htmlFor="country">Land</label>
       <select

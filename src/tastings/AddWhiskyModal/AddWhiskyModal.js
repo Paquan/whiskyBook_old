@@ -55,7 +55,7 @@ export class AddWhiskyModal extends React.Component {
   render() {
     return (
       <Modal isOpen={this.props.isOpen} toggle={this.props.toggle}>
-        <ModalHeader toggle={this.props.toggle}>Modal title</ModalHeader>
+        <ModalHeader toggle={this.props.toggle}>Neuen Whisky hinzufügen</ModalHeader>
         <ModalBody>
           <Pagination>
             <PaginationItem>
@@ -67,7 +67,7 @@ export class AddWhiskyModal extends React.Component {
                   this.props.selectTab(1);
                 }}
               >
-                Heritage
+                Herkunft
               </PaginationLink>
             </PaginationItem>
             <PaginationItem>
@@ -91,7 +91,7 @@ export class AddWhiskyModal extends React.Component {
                   this.props.selectTab(3);
                 }}
               >
-                Kind
+                Art
               </PaginationLink>
             </PaginationItem>
           </Pagination>
@@ -136,10 +136,10 @@ export class AddWhiskyModal extends React.Component {
         </ModalBody>
         <ModalFooter>
           <Button color="primary" onClick={this.props.toggle}>
-            Do Something
+            Weiter
           </Button>
           <Button color="secondary" onClick={this.props.toggle}>
-            Cancel
+            Abbrechen
           </Button>
         </ModalFooter>
       </Modal>
