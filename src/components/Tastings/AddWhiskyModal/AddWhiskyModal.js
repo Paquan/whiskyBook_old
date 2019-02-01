@@ -1,6 +1,5 @@
 import React from 'react';
 import classnames from 'classnames';
-import { HeritageTab } from './HeritageTab';
 import {
   Button,
   Modal,
@@ -13,6 +12,7 @@ import {
   Pagination,
   TabPane
 } from 'reactstrap';
+import { HeritageTab } from './HeritageTab';
 import { DistilleryTab } from './DistilleryTab';
 
 export class AddWhiskyModal extends React.Component {
@@ -20,13 +20,9 @@ export class AddWhiskyModal extends React.Component {
     super(props);
     this.state = {
       activeTab: 1,
-      newWhisky: {
-        distillery: null,
-        heritage: {
-          country: 'SCT',
-          region: null
-        }
-      }
+      distillery: null,
+      country: 'SCT',
+      region: null
     };
   }
 
@@ -37,19 +33,13 @@ export class AddWhiskyModal extends React.Component {
       this.props.addNewDistillery(distillery);
     }
     this.setState({
-      newWhisky: {
-        distillery
-      }
+      distillery
     });
   };
 
   handelCountryChange = event => {
     this.setState({
-      newWhisky: {
-        heritage: {
-          country: event.target.value
-        }
-      }
+      country: event.target.value
     });
   };
 
@@ -60,8 +50,7 @@ export class AddWhiskyModal extends React.Component {
   };
 
   selectNextTab = () => {
-    // TODO: Handle Tab out of Bounce
-
+    // TODO: Handle when tab gets out of bounce
     this.setState(prevState => ({
       activeTab: prevState.activeTab + 1
     }));
@@ -117,7 +106,7 @@ export class AddWhiskyModal extends React.Component {
               tabId={'1'}
               heritage={this.props.options.heritage}
               countryChange={this.handelCountryChange}
-              selectedCountry={this.state.newWhisky.heritage.country}
+              selectedCountry={this.state.country}
             />
             <DistilleryTab
               tabId={'2'}

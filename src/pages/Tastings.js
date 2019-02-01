@@ -1,10 +1,10 @@
 import React from 'react';
-import { Page } from '../shared/Page';
 import { Button } from 'reactstrap';
-import { TastingsTable } from './TastingTable';
-import { tastingOptions } from '../shared/config/tastingOptions';
-import { whiskies } from '../shared/config/whiskys';
-import { AddWhiskyModal } from './AddWhiskyModal/AddWhiskyModal';
+import { PageContainer } from '../container/PageContainer';
+import { TastingsTable } from '../components/Tastings/TastingTable';
+import { AddWhiskyModal } from '../components/Tastings/AddWhiskyModal/AddWhiskyModal';
+import { tastingOptions } from '../config/tastingOptions';
+import { whiskies } from '../config/whiskys';
 
 export class Tastings extends React.Component {
   constructor(props) {
@@ -52,7 +52,7 @@ export class Tastings extends React.Component {
 
   render() {
     return (
-      <Page>
+      <PageContainer>
         <Button color="primary" onClick={this.handleModalToggle}>
           Whisky hinzufügen
         </Button>
@@ -66,7 +66,7 @@ export class Tastings extends React.Component {
         {this.state.whiskies.length && (
           <TastingsTable whiskies={this.state.whiskies} />
         )}
-      </Page>
+      </PageContainer>
     );
   }
 }

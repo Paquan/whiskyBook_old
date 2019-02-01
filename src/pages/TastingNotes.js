@@ -1,12 +1,12 @@
 import React from 'react';
-import { Page } from '../shared/Page';
+import { PageContainer } from '../container/PageContainer';
 
 export class TastingNotes extends React.Component {
   render() {
     return (
-      <Page>
+      <PageContainer>
         <h2>Tasting Notes</h2>
-      </Page>
+      </PageContainer>
     );
   }
 }

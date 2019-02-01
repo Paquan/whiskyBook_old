@@ -2,7 +2,7 @@ import React from 'react';
 import './Page.css';
 import { Link } from 'react-router-dom';
 
-export class Page extends React.Component {
+export class PageContainer extends React.Component {
   render() {
     return (
       <React.Fragment>
