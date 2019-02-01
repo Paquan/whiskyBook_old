@@ -51,7 +51,6 @@ export class AddWhiskyModal extends React.Component {
         }
       }
     });
-    debugger
   };
 
   selectTab = tab => {
