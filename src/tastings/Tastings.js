@@ -10,50 +10,58 @@ export class Tastings extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      addWhiskyModal: false,
-      activeTab: 1,
+      modalIsOpen: false,
       whiskies: [],
       options: {}
     };
-
-    this.toggleAddWhiskyModal = this.toggleAddWhiskyModal.bind(this);
-    this.selectTab = this.selectTab.bind(this);
   }
 
   loadData() {
     this.setState({ whiskies, options: tastingOptions });
   }
 
-  selectTab(tab) {
-    if (this.state.activeTab !== tab) {
-      this.setState({
-        activeTab: tab
-      });
-    }
-  }
-
   componentDidMount() {
     this.loadData();
   }
 
-  toggleAddWhiskyModal() {
-    this.setState({
-      addWhiskyModal: !this.state.addWhiskyModal
-    });
-  }
+  handleModalToggle = () => {
+    this.setState(prevState => ({
+      modalIsOpen: !prevState.modalIsOpen
+    }));
+  };
+
+  handleNewDistillery = newDistillery => {
+    this.setState(prevState => ({
+      options: {
+        ...prevState.options,
+        distilleries: [...prevState.options.distilleries, newDistillery]
+      }
+    }));
+  };
+
+  handleResetDistilleries = () => {
+    this.setState(prevState => ({
+      options: {
+        ...prevState.options,
+        distilleries: prevState.options.distilleries.filter(distillery => {
+          return !distillery.__isNew__;
+        })
+      }
+    }));
+  };
 
   render() {
     return (
       <Page>
-        <Button color="primary" onClick={this.toggleAddWhiskyModal}>
+        <Button color="primary" onClick={this.handleModalToggle}>
           Whisky hinzufügen
         </Button>
         <AddWhiskyModal
-          isOpen={this.state.addWhiskyModal}
-          toggle={this.toggleAddWhiskyModal}
-          activeTab={this.state.activeTab}
+          isOpen={this.state.modalIsOpen}
+          toggleModal={this.handleModalToggle}
           options={this.state.options}
-          selectTab={this.selectTab}
+          addNewDistillery={this.handleNewDistillery}
+          resetDistilleries={this.handleResetDistilleries}
         />
         {this.state.whiskies.length && (
           <TastingsTable whiskies={this.state.whiskies} />

@@ -2,13 +2,12 @@ import React from 'react';
 // import classnames from 'classnames';
 import { TabPane } from 'reactstrap';
 
-let selectedCountry = 'SCT';
-
-const handelCountryChange = event => {
-  selectedCountry = event.target.value;
-};
-
-export const HeritageTab = ({ options, tabId }) => (
+export const HeritageTab = ({
+  tabId,
+  heritage,
+  selectedCountry,
+  countryChange
+}) => (
   <TabPane tabId={tabId}>
     <div className="form-group">
       <label htmlFor="country">Land</label>
@@ -16,10 +15,11 @@ export const HeritageTab = ({ options, tabId }) => (
         className="form-control"
         name="country"
         id="country"
-        onChange={handelCountryChange}
+        defaultValue={selectedCountry}
+        onChange={countryChange}
       >
-        {options.countries &&
-          options.countries
+        {heritage.countries &&
+          heritage.countries
             .sort((a, b) => {
               if (a.name > b.name) {
                 return 1;
@@ -36,28 +36,30 @@ export const HeritageTab = ({ options, tabId }) => (
             ))}
       </select>
     </div>
-    {options.regions[selectedCountry] &&
-      options.regions[selectedCountry].length && (
-        <div className="form-group">
-          <label htmlFor="region">Region</label>
-          <select className="form-control" name="region" id="region">
-            {options.regions[selectedCountry]
-              .sort((a, b) => {
-                if (a.name > b.name) {
-                  return 1;
-                }
-                if (a.name < b.name) {
-                  return -1;
-                }
-                return 0;
-              })
-              .map((region, index) => (
-                <option key={index} value={region.value}>
-                  {region.name}
-                </option>
-              ))}
-          </select>
-        </div>
-      )}
+    {Boolean(
+      heritage.regions[selectedCountry] &&
+        heritage.regions[selectedCountry].length
+    ) && (
+      <div className="form-group">
+        <label htmlFor="region">Region</label>
+        <select className="form-control" name="region" id="region">
+          {heritage.regions[selectedCountry]
+            .sort((a, b) => {
+              if (a.name > b.name) {
+                return 1;
+              }
+              if (a.name < b.name) {
+                return -1;
+              }
+              return 0;
+            })
+            .map((region, index) => (
+              <option key={index} value={region.value}>
+                {region.name}
+              </option>
+            ))}
+        </select>
+      </div>
+    )}
   </TabPane>
 );
