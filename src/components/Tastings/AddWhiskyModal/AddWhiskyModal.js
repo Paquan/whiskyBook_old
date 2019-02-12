@@ -9,11 +9,11 @@ import {
   TabContent,
   PaginationLink,
   PaginationItem,
-  Pagination,
-  TabPane
+  Pagination
 } from 'reactstrap';
 import { HeritageTab } from './HeritageTab';
 import { DistilleryTab } from './DistilleryTab';
+import { KindTap } from './KindTab';
 
 export class AddWhiskyModal extends React.Component {
   constructor(props) {
@@ -22,7 +22,12 @@ export class AddWhiskyModal extends React.Component {
       activeTab: 1,
       distillery: null,
       country: 'SCT',
-      region: null
+      region: null,
+      kind: 'SM',
+      chillFiltered: false,
+      colored: false,
+      caskStrength: false,
+      singleCask: false
     };
   }
 
@@ -37,6 +42,43 @@ export class AddWhiskyModal extends React.Component {
     });
   };
 
+  handleKindChange = event => {
+    this.setState(
+      {
+        kind: event.target.value
+      },
+      () => {
+        if (this.state.kind === 'BO' && this.state.country === 'USA') {
+          this.handleColoredChange(false);
+        }
+      }
+    );
+  };
+
+  handleChillFilteredChange = chillFiltered => {
+    this.setState({
+      chillFiltered
+    });
+  };
+
+  handleColoredChange = colored => {
+    this.setState({
+      colored
+    });
+  };
+
+  handleSingleCaskChange = singleCask => {
+    this.setState({
+      singleCask
+    });
+  };
+
+  handleCaskStrengthChange = caskStrength => {
+    this.setState({
+      caskStrength
+    });
+  };
+
   handelCountryChange = event => {
     this.setState({
       country: event.target.value
@@ -45,7 +87,7 @@ export class AddWhiskyModal extends React.Component {
 
   selectTab = tab => {
     this.setState({
-      activeTab: tab
+      activeTab: Number(tab)
     });
   };
 
@@ -103,17 +145,30 @@ export class AddWhiskyModal extends React.Component {
           </Pagination>
           <TabContent activeTab={this.state.activeTab.toString()}>
             <HeritageTab
-              tabId={'1'}
+              tabId={1}
               heritage={this.props.options.heritage}
               countryChange={this.handelCountryChange}
               selectedCountry={this.state.country}
             />
             <DistilleryTab
-              tabId={'2'}
+              tabId={2}
               distilleries={this.props.options.distilleries}
               distilleryChange={this.handleDistilleryChange}
             />
-            <TabPane tabId="3">...</TabPane>
+            <KindTap
+              tabId={3}
+              kinds={this.props.options.kinds}
+              selectedKind={this.state.kind}
+              kindChange={this.handleKindChange}
+              chillFiltered={this.state.chillFiltered}
+              chillFilteredChange={this.handleChillFilteredChange}
+              colored={this.state.colored}
+              coloredChange={this.handleColoredChange}
+              singleCask={this.state.singleCask}
+              singleCaskChange={this.handleSingleCaskChange}
+              caskStrength={this.state.caskStrength}
+              caskStrengthChange={this.handleCaskStrengthChange}
+            />
           </TabContent>
         </ModalBody>
         <ModalFooter>

@@ -1,31 +1,22 @@
 import React from 'react';
 import { TabPane } from 'reactstrap';
 import CreatableSelect from 'react-select/lib/Creatable';
+import { sortAlphabeticly } from '../../../utils/sortAlphabeticly';
 
 export const DistilleryTab = ({ distilleries, tabId, distilleryChange }) => (
-  <TabPane tabId={tabId}>
+  <TabPane tabId={tabId.toString()}>
     <div className="form-group">
       <CreatableSelect
         isClearable
         onChange={distilleryChange}
         options={
           distilleries &&
-          distilleries
-            .map(distillery => {
-              return {
-                label: distillery.label,
-                value: distillery.value.toString()
-              };
-            })
-            .sort((a, b) => {
-              if (a.name > b.name) {
-                return 1;
-              }
-              if (a.name < b.name) {
-                return -1;
-              }
-              return 0;
-            })
+          sortAlphabeticly(distilleries).map(distillery => {
+            return {
+              label: distillery.name,
+              value: distillery.value.toString()
+            };
+          })
         }
       />
     </div>

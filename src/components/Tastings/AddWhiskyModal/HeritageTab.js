@@ -1,5 +1,6 @@
 import React from 'react';
 import { TabPane } from 'reactstrap';
+import { sortAlphabeticly } from '../../../utils/sortAlphabeticly';
 
 export const HeritageTab = ({
   tabId,
@@ -7,7 +8,7 @@ export const HeritageTab = ({
   selectedCountry,
   countryChange
 }) => (
-  <TabPane tabId={tabId}>
+  <TabPane tabId={tabId.toString()}>
     <div className="form-group">
       <label htmlFor="country">Land</label>
       <select
@@ -18,21 +19,11 @@ export const HeritageTab = ({
         onChange={countryChange}
       >
         {heritage.countries &&
-          heritage.countries
-            .sort((a, b) => {
-              if (a.name > b.name) {
-                return 1;
-              }
-              if (a.name < b.name) {
-                return -1;
-              }
-              return 0;
-            })
-            .map((country, index) => (
-              <option key={index} value={country.value}>
-                {country.name}
-              </option>
-            ))}
+          sortAlphabeticly(heritage.countries).map(country => (
+            <option key={country.value} value={country.value}>
+              {country.name}
+            </option>
+          ))}
       </select>
     </div>
     {Boolean(
@@ -42,21 +33,13 @@ export const HeritageTab = ({
       <div className="form-group">
         <label htmlFor="region">Region</label>
         <select className="form-control" name="region" id="region">
-          {heritage.regions[selectedCountry]
-            .sort((a, b) => {
-              if (a.name > b.name) {
-                return 1;
-              }
-              if (a.name < b.name) {
-                return -1;
-              }
-              return 0;
-            })
-            .map((region, index) => (
+          {sortAlphabeticly(heritage.regions[selectedCountry]).map(
+            (region, index) => (
               <option key={index} value={region.value}>
                 {region.name}
               </option>
-            ))}
+            )
+          )}
         </select>
       </div>
     )}

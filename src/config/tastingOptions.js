@@ -1,10 +1,10 @@
 export const tastingOptions = {
   distilleries: [
-    { value: 1, label: 'Glenmorangie' },
-    { value: 2, label: 'GlenDronach' },
-    { value: 3, label: 'Aberlour' },
-    { value: 4, label: 'The Glenlivet' },
-    { value: 5, label: 'Balvenie' }
+    { value: 1, name: 'Glenmorangie' },
+    { value: 2, name: 'GlenDronach' },
+    { value: 3, name: 'Aberlour' },
+    { value: 4, name: 'The Glenlivet' },
+    { value: 5, name: 'Balvenie' }
   ],
   heritage: {
     countries: [
@@ -13,7 +13,7 @@ export const tastingOptions = {
       { value: 'USA', name: 'Vereinigte Staaten von Amerika' },
       { value: 'JPN', name: 'Japan' },
       { value: 'CAN', name: 'Kanada' },
-      { value: 'GER', name: 'Deutschland' },
+      { value: 'GER', name: 'Deutschland' }
     ],
     regions: {
       SCT: [
@@ -60,7 +60,15 @@ export const tastingOptions = {
       FRA: []
     }
   },
-  kind: ['SM', 'BLM', 'BL', 'BO', 'R'],
+  kinds: [
+    { value: 'SM', name: 'Single Malt' },
+    { value: 'BLM', name: 'Blended Malt' },
+    { value: 'BL', name: 'Blend' },
+    { value: 'BO', name: 'Bourbon' },
+    { value: 'R', name: 'Rye' },
+    { value: 'G', name: 'Grain' },
+    { value: 'SG', name: 'Single Grain' }
+  ],
   maturation: {
     SHERRY: ['OLOROSO', 'PEDRO XIMENEZ', 'FINO', 'AMONTILLADO', 'MANZANILLA'],
     WINE: ['CABERNET SAUVIGNON', 'AMERONE', 'BURGUNDY', 'BANYUL'],
