@@ -5,6 +5,10 @@ import './App.css';
 import { TastingNotes } from './pages/TastingNotes';
 import { Tastings } from './pages/Tastings';
 import { Home } from './pages/Home';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faPlus, faTrash } from '@fortawesome/free-solid-svg-icons'
+
+library.add(faPlus, faTrash)
 
 export class App extends React.Component {
   render() {

@@ -70,16 +70,48 @@ export const tastingOptions = {
     { value: 'SG', name: 'Single Grain' }
   ],
   maturation: {
-    SHERRY: ['OLOROSO', 'PEDRO XIMENEZ', 'FINO', 'AMONTILLADO', 'MANZANILLA'],
-    WINE: ['CABERNET SAUVIGNON', 'AMERONE', 'BURGUNDY', 'BANYUL'],
-    MADEIRA: [],
-    MARSALA: [],
-    SAUTERNES: [],
-    BOURBON: [],
-    PORT: [],
-    MALAGA: [],
-    RUM: [],
-    WOOD: ['WHITE-OAK', 'DARK-OAK'],
-    BEER: []
+    caskKinds: [
+      { value: 'SHERRY', name: 'Sherry' },
+      { value: 'WINE', name: 'Wein' },
+      { value: 'MADEIRA', name: 'Madeira' },
+      { value: 'MARSALA', name: 'Marsala' },
+      { value: 'MAGALA', name: 'Magala' },
+      { value: 'SAUTERNES', name: 'Sauternes' },
+      { value: 'BOURBON', name: 'Bourbon' },
+      { value: 'PORT', name: 'Portwein' },
+      { value: 'RUM', name: 'Rum' },
+      { value: 'OAK', name: 'Frisches Eichenfass' },
+      { value: 'BEER', name: 'Bier' }
+    ],
+    specifications: {
+      SHERRY: [
+        { value: 'OLOROSO', name: 'Oloroso' },
+        { value: 'PEDRO_XIMENEZ', name: 'Pedro Ximenez' },
+        { value: 'FINO', name: 'Fino' },
+        { value: 'AMONTILLADO', name: 'Amontillado' },
+        { value: 'MANZANILLA', name: 'Manzanilla' }
+      ],
+      WINE: [
+        { value: 'CABERNET_SAUVIGNON', name: 'Cabernet Sauvignon' },
+        { value: 'AMERONE', name: 'Amerone' },
+        { value: 'BURGUNDY', name: 'Burgunder' },
+        { value: 'BANYUL', name: 'Banyul' }
+      ],
+      MADEIRA: [],
+      MARSALA: [],
+      SAUTERNES: [],
+      BOURBON: [],
+      PORT: [
+        { value: 'RED_PORT', name: 'Roter Portwein' },
+        { value: 'WHITE_PORT', name: 'Weißer Portwein' }
+      ],
+      MALAGA: [],
+      RUM: [],
+      OAK: [
+        { value: 'US_WHITE_OAK', name: 'Amerikanische Eiche' },
+        { value: 'EU_DARK_OAK', name: 'Europäische Eiche' }
+      ],
+      BEER: [{ value: 'IPA', name: 'IPA' }]
+    }
   }
 };

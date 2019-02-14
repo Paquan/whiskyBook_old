@@ -30,7 +30,8 @@ export class Tastings extends React.Component {
     }));
   };
 
-  handleNewDistillery = newDistillery => {
+  handleAddDistillery = newDistillery => {
+    newDistillery.name = newDistillery.label;
     this.setState(prevState => ({
       options: {
         ...prevState.options,
@@ -50,6 +51,68 @@ export class Tastings extends React.Component {
     }));
   };
 
+  handleAddCaskKind = newCaskKind => {
+    newCaskKind.name = newCaskKind.label;
+    this.setState(prevState => ({
+      options: {
+        ...prevState.options,
+        maturation: {
+          ...prevState.options.maturation,
+          caskKinds: [...prevState.options.maturation.caskKinds, newCaskKind]
+        }
+      }
+    }));
+  };
+
+  handleResetCaskKinds = () => {
+    this.setState(prevState => ({
+      options: {
+        ...prevState.options,
+        maturation: {
+          ...prevState.options.maturation,
+          caskKinds: prevState.options.maturation.caskKinds.filter(caskKind => {
+            return !caskKind.__isNew__;
+          })
+        }
+      }
+    }));
+  };
+
+  handleAddSpecification = newSpecification => {
+    newSpecification.name = newSpecification.label;
+    this.setState(prevState => ({
+      options: {
+        ...prevState.options,
+        maturation: {
+          ...prevState.options.maturation,
+          specifications: [...prevState.options.maturation.specifications, newSpecification]
+        }
+      }
+    }));
+  };
+
+  handleResetSpecification = () => {
+    this.setState(prevState => {
+      const specifications = {};
+      Object.keys(prevState.options.maturation.specifications).forEach(specification => {
+        specifications[specification] = prevState.options.maturation.specifications[specification].filter(
+          specification => {
+            return !specification.__isNew__;
+          }
+        );
+      });
+      return {
+        options: {
+          ...prevState.options,
+          maturation: {
+            ...prevState.options.maturation,
+            specifications
+          }
+        }
+      };
+    });
+  };
+
   render() {
     return (
       <PageContainer>
@@ -60,12 +123,14 @@ export class Tastings extends React.Component {
           isOpen={this.state.modalIsOpen}
           toggleModal={this.handleModalToggle}
           options={this.state.options}
-          addNewDistillery={this.handleNewDistillery}
+          addDistillery={this.handleAddDistillery}
           resetDistilleries={this.handleResetDistilleries}
+          addCaskKind={this.handleAddCaskKind}
+          resetCaskKinds={this.handleResetCaskKinds}
+          addSpecification={this.handleAddSpecification}
+          resetSpecification={this.handleResetSpecification}
         />
-        {this.state.whiskies.length && (
-          <TastingsTable whiskies={this.state.whiskies} />
-        )}
+        {this.state.whiskies.length && <TastingsTable whiskies={this.state.whiskies} />}
       </PageContainer>
     );
   }

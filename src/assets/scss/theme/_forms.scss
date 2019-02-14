@@ -1,0 +1,18 @@
+.form-control:focus {
+  box-shadow: none;
+}
+
+.input-group .input-group-prepend .btn-group .btn:first-child {
+  border-radius: 0;
+}
+
+.input-group-prepend .btn-group > .btn, .input-group-append .btn-group > .btn {
+  z-index: 0;
+  &.active {
+    z-index: 0;
+  }
+}
+
+.btn:focus {
+  box-shadow: none;
+}

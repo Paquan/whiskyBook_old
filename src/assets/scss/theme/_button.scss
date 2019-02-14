@@ -1,0 +1,11 @@
+.btn:focus {
+  box-shadow: none !important;
+}
+
+.btn-link-remove {
+  color: $red;
+
+  &:hover {
+    color: darken($red, 20%);
+  }
+}

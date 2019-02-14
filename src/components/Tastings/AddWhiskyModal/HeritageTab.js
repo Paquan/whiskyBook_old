@@ -2,12 +2,7 @@ import React from 'react';
 import { TabPane } from 'reactstrap';
 import { sortAlphabeticly } from '../../../utils/sortAlphabeticly';
 
-export const HeritageTab = ({
-  tabId,
-  heritage,
-  selectedCountry,
-  countryChange
-}) => (
+export const HeritageTab = ({ tabId, heritage, selectedCountry, countryChange, regionChnage, selectedRegion }) => (
   <TabPane tabId={tabId.toString()}>
     <div className="form-group">
       <label htmlFor="country">Land</label>
@@ -26,20 +21,21 @@ export const HeritageTab = ({
           ))}
       </select>
     </div>
-    {Boolean(
-      heritage.regions[selectedCountry] &&
-        heritage.regions[selectedCountry].length
-    ) && (
+    {Boolean(heritage.regions[selectedCountry] && heritage.regions[selectedCountry].length) && (
       <div className="form-group">
         <label htmlFor="region">Region</label>
-        <select className="form-control" name="region" id="region">
-          {sortAlphabeticly(heritage.regions[selectedCountry]).map(
-            (region, index) => (
-              <option key={index} value={region.value}>
-                {region.name}
-              </option>
-            )
-          )}
+        <select
+          className="form-control"
+          name="region"
+          id="region"
+          defaultValue={selectedRegion}
+          onChange={regionChnage}
+        >
+          {sortAlphabeticly(heritage.regions[selectedCountry]).map((region, index) => (
+            <option key={index} value={region.value}>
+              {region.name}
+            </option>
+          ))}
         </select>
       </div>
     )}
