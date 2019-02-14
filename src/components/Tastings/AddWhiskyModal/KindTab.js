@@ -23,7 +23,7 @@ export const KindTap = ({
         className="form-control"
         name="kind"
         id="kind"
-        defaultValue={selectedKind}
+        value={selectedKind}
         onChange={kindChange}
       >
         {kinds &&

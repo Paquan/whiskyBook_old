@@ -16,6 +16,7 @@ import { HeritageTab } from './HeritageTab';
 import { DistilleryTab } from './DistilleryTab';
 import { KindTap } from './KindTab';
 import { MaturationTab } from './MaturationTab';
+import { sortAlphabeticly } from '../../../utils/sortAlphabeticly';
 
 export class AddWhiskyModal extends React.Component {
   constructor(props) {
@@ -23,6 +24,7 @@ export class AddWhiskyModal extends React.Component {
     this.state = {
       activeTab: 1,
       distillery: null,
+      name: '',
       country: 'SCT',
       region: 'SS',
       kind: 'SM',
@@ -42,15 +44,20 @@ export class AddWhiskyModal extends React.Component {
     };
   }
 
-  handelCountryChange = event => {
+  handleCountryChange = event => {
     const country = event.target.value;
     this.setState(prevState => ({
       country,
-      region: prevState.country === country ? prevState.region : null
+      region:
+        prevState.country === country
+          ? prevState.region
+          : this.props.options.heritage.regions[country][0]
+          ? sortAlphabeticly(this.props.options.heritage.regions[country])[0].value
+          : null
     }));
   };
 
-  handelRegionChange = event => {
+  handleRegionChange = event => {
     const region = event.target.value;
     this.setState({ region });
   };
@@ -63,6 +70,12 @@ export class AddWhiskyModal extends React.Component {
     }
     this.setState({
       distillery: distillery ? distillery.value : null
+    });
+  };
+
+  handleNameChange = event => {
+    this.setState({
+      name: event.target.value
     });
   };
 
@@ -160,13 +173,7 @@ export class AddWhiskyModal extends React.Component {
   handleAddMaturation = () => {
     this.setState(prevState => {
       const maturations = prevState.maturations;
-      prevState.maturations.push({
-        caskKind: 'BOURBON',
-        specification: null,
-        duration: 3,
-        durationUnit: 'Y',
-        finish: false
-      });
+      prevState.maturations.push(defaultWhiskySettings.maturations[0]);
       return {
         maturations
       };
@@ -269,15 +276,18 @@ export class AddWhiskyModal extends React.Component {
             <HeritageTab
               tabId={1}
               heritage={this.props.options.heritage}
-              countryChange={this.handelCountryChange}
               selectedCountry={this.state.country}
-              regionChnage={this.handeRegionChange}
               selectedRegion={this.state.region}
+              countryChange={this.handleCountryChange}
+              regionChnage={this.handleRegionChange}
             />
             <DistilleryTab
               tabId={2}
               distilleries={this.props.options.distilleries}
+              selectedDistillery={this.state.distillery}
+              name={this.state.name}
               distilleryChange={this.handleDistilleryChange}
+              nameChange={this.handleNameChange}
             />
             <KindTap
               tabId={3}

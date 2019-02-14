@@ -10,7 +10,7 @@ export const HeritageTab = ({ tabId, heritage, selectedCountry, countryChange, r
         className="form-control"
         name="country"
         id="country"
-        defaultValue={selectedCountry}
+        value={selectedCountry}
         onChange={countryChange}
       >
         {heritage.countries &&
@@ -28,7 +28,7 @@ export const HeritageTab = ({ tabId, heritage, selectedCountry, countryChange, r
           className="form-control"
           name="region"
           id="region"
-          defaultValue={selectedRegion}
+          value={selectedRegion}
           onChange={regionChnage}
         >
           {sortAlphabeticly(heritage.regions[selectedCountry]).map((region, index) => (

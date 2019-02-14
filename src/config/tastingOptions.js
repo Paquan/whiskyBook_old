@@ -46,7 +46,7 @@ export const tastingOptions = {
         { name: 'Schleswig-Holstein', value: 'SH' },
         { name: 'Tühring', value: 'TH' }
       ],
-      USA: ['KY', 'TN'],
+      USA: [{ name: 'Kentucky', value: 'KY' }, { name: 'Tennessee', value: 'TN' }],
       IRL: [],
       JPN: [],
       WAL: [],
@@ -101,10 +101,7 @@ export const tastingOptions = {
       MARSALA: [],
       SAUTERNES: [],
       BOURBON: [],
-      PORT: [
-        { value: 'RED_PORT', name: 'Roter Portwein' },
-        { value: 'WHITE_PORT', name: 'Weißer Portwein' }
-      ],
+      PORT: [{ value: 'RED_PORT', name: 'Roter Portwein' }, { value: 'WHITE_PORT', name: 'Weißer Portwein' }],
       MALAGA: [],
       RUM: [],
       OAK: [
