@@ -9,7 +9,7 @@ import {
   TabContent,
   PaginationLink,
   PaginationItem,
-  Pagination
+  Pagination,
 } from 'reactstrap';
 import { defaultWhiskySettings } from '../../../config/defaultWhiskySettings';
 import { HeritageTab } from './HeritageTab';
@@ -17,6 +17,7 @@ import { DistilleryTab } from './DistilleryTab';
 import { KindTap } from './KindTab';
 import { MaturationTab } from './MaturationTab';
 import { sortAlphabeticly } from '../../../utils/sortAlphabeticly';
+import { RatingTab } from './RatingTab';
 
 export class AddWhiskyModal extends React.Component {
   constructor(props) {
@@ -271,6 +272,18 @@ export class AddWhiskyModal extends React.Component {
                 Reifung
               </PaginationLink>
             </PaginationItem>
+            <PaginationItem>
+              <PaginationLink
+                className={classnames({
+                  active: this.state.activeTab === 5
+                })}
+                onClick={() => {
+                  this.selectTab(5);
+                }}
+              >
+                Bewertung
+              </PaginationLink>
+            </PaginationItem>
           </Pagination>
           <TabContent activeTab={this.state.activeTab.toString()}>
             <HeritageTab
@@ -315,6 +328,7 @@ export class AddWhiskyModal extends React.Component {
               maturationAdd={this.handleAddMaturation}
               maturationRemove={this.handleRemoveMaturation}
             />
+            <RatingTab tabId={5} />
           </TabContent>
         </ModalBody>
         <ModalFooter>

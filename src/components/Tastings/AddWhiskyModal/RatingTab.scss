@@ -1,0 +1,16 @@
+.rating {
+  display: flex;
+  justify-content: center;
+
+  .rating-star:not(:first-child) {
+    margin-left: 10px;
+  }
+
+  svg {
+    overflow: visible;
+
+    path {
+      transform-origin: center;
+    }
+  }
+}
