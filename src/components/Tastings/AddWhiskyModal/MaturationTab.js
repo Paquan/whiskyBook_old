@@ -130,7 +130,7 @@ export const MaturationTab = ({
                 maturationRemove(index);
               }}
             >
-              Diese Reifung entfernen <FontAwesomeIcon icon="trash" />
+              Entfernen <FontAwesomeIcon icon="trash" />
             </Button>
           </Row>
           <hr />

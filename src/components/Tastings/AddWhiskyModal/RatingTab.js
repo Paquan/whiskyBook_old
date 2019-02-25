@@ -60,14 +60,14 @@ export class RatingTab extends React.Component {
     for (let index = 0; index < 5; index++) {
       lottie
         .loadAnimation({
-          container: document.getElementById(`rate-${index + 1}`),
+          container: document.querySelector(`#rate-${index + 1}`),
           renderer: 'svg',
           loop: false,
           autoplay: false,
           name: 'rate-' + index,
           animationData: Stars
         })
-        .goToAndStop(index + 1 <= this.props.rate ? 24 : 10, true);
+        .goToAndStop(index + 1 <= this.props.rate ? 25 : 10, true);
     }
   }
 
@@ -75,7 +75,7 @@ export class RatingTab extends React.Component {
     lottie.getRegisteredAnimations().forEach((star, index) => {
       if (index < rate && (star.currentFrame === 10 || star.currentFrame === 29)) {
         star.playSegments([10, 30]);
-      } else if (star.currentFrame === 19 && index >= rate) {
+      } else if ((star.currentFrame === 19 || star.currentFrame === 25) && index >= rate) {
         star.playSegments([70, 100]);
       }
     });
