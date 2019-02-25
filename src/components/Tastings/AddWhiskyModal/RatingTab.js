@@ -67,7 +67,7 @@ export class RatingTab extends React.Component {
           name: 'rate-' + index,
           animationData: Stars
         })
-        .goToAndStop(10, true);
+        .goToAndStop(index + 1 <= this.props.rate ? 24 : 10, true);
     }
   }
 
@@ -79,6 +79,7 @@ export class RatingTab extends React.Component {
         star.playSegments([70, 100]);
       }
     });
+    this.props.rateChange(rate);
   };
 
   render() {
@@ -131,7 +132,7 @@ export class RatingTab extends React.Component {
             <Star color={'#fff'} borderColor={'rgb(255, 217, 31)'} />
           </span>
         </div>
-        
+
         <div id="rating">
           <div
             id="rate-1"

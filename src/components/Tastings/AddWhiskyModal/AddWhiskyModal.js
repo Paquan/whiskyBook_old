@@ -9,7 +9,7 @@ import {
   TabContent,
   PaginationLink,
   PaginationItem,
-  Pagination,
+  Pagination
 } from 'reactstrap';
 import { defaultWhiskySettings } from '../../../config/defaultWhiskySettings';
 import { HeritageTab } from './HeritageTab';
@@ -41,7 +41,8 @@ export class AddWhiskyModal extends React.Component {
           durationUnit: 'Y',
           finish: true
         }
-      ]
+      ],
+      rate: 1
     };
   }
 
@@ -189,6 +190,12 @@ export class AddWhiskyModal extends React.Component {
     }));
   };
 
+  handleRateChange = rate => {    
+    this.setState({
+      rate
+    });
+  };
+
   selectTab = tab => {
     this.setState({
       activeTab: Number(tab)
@@ -328,7 +335,7 @@ export class AddWhiskyModal extends React.Component {
               maturationAdd={this.handleAddMaturation}
               maturationRemove={this.handleRemoveMaturation}
             />
-            <RatingTab tabId={5} />
+            <RatingTab tabId={5} rateChange={this.handleRateChange} rate={this.state.rate} />
           </TabContent>
         </ModalBody>
         <ModalFooter>
